@@ -2,6 +2,7 @@ package com.example.application.views.personel;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 import org.springframework.http.ResponseEntity;
@@ -71,10 +72,13 @@ public class PersonelView extends VerticalLayout {
 
     private void addNewPersonel() {
         // create new personel
+        Random random = new Random();
+        long tc = 10000000000L + (long) (random.nextDouble() * 90000000000L); //generate random tc
+
         Personel newPersonel = new Personel();
         newPersonel.setName("zeynep");
         newPersonel.setSurname("ztrk");
-        newPersonel.setTc("56478905345");
+        newPersonel.setTc(String.valueOf(tc));
 
         String url = "http://localhost:8282/api/personel";
         ResponseEntity<String> response = restTemplate.postForEntity(url, newPersonel, String.class);
