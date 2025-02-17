@@ -20,6 +20,14 @@ public class PersonelService {
         return personelRepository.findAll();
     }
 
+    public void createPersonel(String name, String surname, String tc){
+        Personel personel = new Personel();
+        personel.setName(name);
+        personel.setSurname(surname);
+        personel.setTc(tc);
+        personelRepository.save(personel);
+        
+    }
     public void addDummyPersonel() {
         for (int i = 1; i <= 10; i++) {
             Personel personel = new Personel();
@@ -29,4 +37,6 @@ public class PersonelService {
             personelRepository.save(personel);
         }
     }
+
+
 }
